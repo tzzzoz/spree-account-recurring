@@ -60,7 +60,8 @@ module Spree
     end
 
     def authenticate_subscription
-      if subscription = spree_current_user.subscriptions.undeleted.where(:plan_id => params[:plan_id]).present?
+      if spree_current_user.subscriptions.undeleted.where(:plan_id => params[:plan_id]).present?
+        subscription = spree_current_user.subscriptions.undeleted.where(:plan_id => params[:plan_id]).first
         flash[:alert] = "You have already subscribed."
         redirect_to recurring_plan_subscription_url(@plan, subscription)
       end
