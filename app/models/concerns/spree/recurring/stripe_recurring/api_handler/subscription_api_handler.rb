@@ -14,7 +14,7 @@ module Spree
           def unsubscribe(subscription)
             raise_invalid_object_error(subscription, Spree::Subscription)
             before_each
-            subscription.user.api_customer.retrieve(subscription.subscription_id).delete
+            subscription.user.api_customer.subscriptions.retrieve(subscription.subscription_id).delete
           end
         end
       end
