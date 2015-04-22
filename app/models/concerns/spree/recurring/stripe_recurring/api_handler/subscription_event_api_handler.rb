@@ -5,6 +5,7 @@ module Spree
         module SubscriptionEventApiHandler
           def retrieve_event(event_id)
             begin
+              before_each
               Stripe::Event.retrieve(event_id)
             rescue error_class => e
               logger.error "Stripe Event error: #{e.message}"

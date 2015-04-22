@@ -5,6 +5,7 @@ module Spree
         module PlanApiHandler
           def create_plan(plan)
             raise_invalid_object_error(plan, Spree::Plan)
+            before_each
             Stripe::Plan.create(
               amount: stripe_amount(plan.amount),
               interval: plan.interval,
