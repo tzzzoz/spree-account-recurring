@@ -37,6 +37,7 @@ module Spree
           private
 
           def retrieve_api_plan(plan)
+            before_each
             Stripe::Plan.retrieve(plan.api_plan_id)
           end
 

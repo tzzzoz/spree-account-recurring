@@ -12,6 +12,7 @@ module Spree
 
           def unsubscribe(subscription)
             raise_invalid_object_error(subscription, Spree::Subscription)
+            before_each
             subscription.user.api_customer.cancel_subscription
           end
         end
